@@ -10,8 +10,8 @@ public class Main {
         String url = "jdbc:mysql://localhost:3306/Acceso";
         String user = "root";
         String password = "romanick";
-        String sqlInsert = "INSERT INTO Equipo(id, nombre, categoria, disponible)" +
-                " VALUES (?, ?, ?)";
+        String sqlInsert = "INSERT INTO Producto(id, nombre, categoria, disponible)" +
+                " VALUES (?, ?, ?,?)";
 
         try
             (Connection conn = DriverManager.getConnection(url, user, password);

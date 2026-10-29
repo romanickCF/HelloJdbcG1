@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/cesur/dam/g1/Main.java" value="7e0253a0-35f0-4305-b30f-e26ecd078e1f" />
-    <file url="file://$PROJECT_DIR$/src/main/java/cesur/dam/g1/models/EquipoJdbcDAO.java" value="7e0253a0-35f0-4305-b30f-e26ecd078e1f" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cesur/dam/g1/data/EquipoJdbcDAO.java" value="7e0253a0-35f0-4305-b30f-e26ecd078e1f" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/example/Main.java" value="7e0253a0-35f0-4305-b30f-e26ecd078e1f" />
   </component>
 </project>

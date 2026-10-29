@@ -1,10 +1,9 @@
 package cesur.dam.g1;
 
 import cesur.dam.g1.models.Equipo;
-import cesur.dam.g1.models.EquipoJdbcDAO;
+import cesur.dam.g1.data.EquipoJdbcDAO;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-import java.util.List;
 import java.util.Optional;
 
 public class Main2 {

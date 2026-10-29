@@ -1,7 +1,6 @@
-package cesur.dam.g1.models;
+package cesur.dam.g1.data;
 
-import cesur.dam.g1.data.DAO;
-import com.mysql.cj.jdbc.MysqlDataSource;
+import cesur.dam.g1.models.Equipo;
 
 import javax.sql.DataSource;
 import java.sql.*;

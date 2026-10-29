@@ -17,16 +17,16 @@ public class Main {
 
 
 
-        String url = "jdbc:mysql://localhost:3307/ad";
+        String url = "jdbc:mysql://localhost:3307/Acceso";
         String username = "user" ;
         String password = "pwd" ;
-        String sqlQuery = "select * from Producto";
-        String sqlFind = "select * from Producto where id=?";
-        String sqlInsert = "insert into Producto (nombre, categoria, disponible) " +
+        String sqlQuery = "select * from Equipo";
+        String sqlFind = "select * from Equipo where id=?";
+        String sqlInsert = "insert into Equipo (nombre, categoria, disponible) " +
                            "VALUES (?,?,?)";
-        String sqlUpdate = "update Producto set nombre=?, categoria=?, disponible=? " +
+        String sqlUpdate = "update Equipo set nombre=?, categoria=?, disponible=? " +
                            "where id=?";
-        String sqlDelete = "delete from Producto where id=?";
+        String sqlDelete = "delete from Equipo where id=?";
 
         try(Connection conn = DriverManager.getConnection(url, username, password);
             PreparedStatement pst = conn.prepareStatement(sqlInsert) )

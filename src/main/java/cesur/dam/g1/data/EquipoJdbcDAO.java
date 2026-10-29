@@ -32,7 +32,6 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                Equipo e = new Equipo();
                 return Optional.of(mapper(rs));
             }
 
@@ -123,5 +122,15 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Optional<Equipo> findByName(String nombre) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Equipo> findByCategory(String categoria) {
+        return List.of();
     }
 }

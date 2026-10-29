@@ -15,7 +15,7 @@ public interface DAO<T> {
     void deleteById(Long id);
 
 
+    Optional<Equipo> findByName(String nombre);
 
-
-
+    List<Equipo> findByCategory(String categoria);
 }

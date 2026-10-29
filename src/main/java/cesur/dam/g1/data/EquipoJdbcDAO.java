@@ -18,17 +18,17 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
     private static final String SQL_DELETE = "DELETE FROM Equipo WHERE id = ?";
     private final DataSource ds;
 
-    public EquipoJdbcDAO( DataSource ds) {
+    public EquipoJdbcDAO(DataSource ds) {
         this.ds = ds;
     }
 
     @Override
-    public Optional<Equipo> findById(int id) {
+    public Optional<Equipo> findById(Long id) {
 
         try(Connection conn = ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_FIND_BY_ID) )
         {
-            pst.setInt(1, id);
+            pst.setLong(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -39,7 +39,7 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override

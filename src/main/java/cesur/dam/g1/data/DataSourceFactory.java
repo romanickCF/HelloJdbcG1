@@ -7,18 +7,19 @@ import javax.sql.DataSource;
 public class DataSourceFactory {
 
     private static String url = "jdbc:mysql://localhost:3306/Acceso";
-    private static String user = "root";
-    private static String password = "romanick";
+    private static final String username = System.getenv("USER");
+    private static final String password = System.getenv("PASSWORD");
 
     private static DataSource ds = null;
 
 
     public static DataSource getDataSource() {
         if (ds == null) {
-            MysqlDataSource ds = new MysqlDataSource();
-            ds.setURL("url");
-            ds.setUser("username");
-            ds.setPassword("password");
+            MysqlDataSource dataSource = new MysqlDataSource();
+            dataSource.setURL(url);
+            dataSource.setUser(username);
+            dataSource.setPassword(password);
+            ds = dataSource;
         }
         return ds;
     }

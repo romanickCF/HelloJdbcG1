@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface DAO<T> {
 
-    Optional<Equipo> findById(int id);
+    Optional<Equipo> findById(Long id);
     List<T> findAll();
 
     T save(T entity);

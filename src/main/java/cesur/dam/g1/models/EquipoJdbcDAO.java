@@ -1,7 +1,9 @@
 package cesur.dam.g1.models;
 
 import cesur.dam.g1.data.DAO;
+import com.mysql.cj.jdbc.MysqlDataSource;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,21 +11,22 @@ import java.util.Optional;
 
 public class EquipoJdbcDAO implements DAO<Equipo> {
 
-    private String url = "jdbc:mysql://localhost:3306/Acceso";
-    private String user = "root";
-    private String password = "romanick";
-
 
     private static final String SQL_FIND_BY_ID = "SELECT * FROM Equipo WHERE id = ?";
     private static final String SQL_FIND_ALL = "SELECT * FROM Equipo";
     private static final String SQL_INSERT = "INSERT INTO Equipo (nombre, categoria, disponible) VALUES (?,?,?)";
     private static final String SQL_UPDATE = "UPDATE Equipo SET nombre = ?, categoria = ?, disponible = ? WHERE id = ?";
     private static final String SQL_DELETE = "DELETE FROM Equipo WHERE id = ?";
+    private final DataSource ds;
 
+    public EquipoJdbcDAO( DataSource ds) {
+        this.ds = ds;
+    }
 
     @Override
     public Optional<Equipo> findById(int id) {
-        try(Connection conn = DriverManager.getConnection(url, user, password);
+
+        try(Connection conn = ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_FIND_BY_ID) )
         {
             pst.setInt(1, id);
@@ -43,7 +46,7 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
     @Override
     public List<Equipo> findAll() {
         List<Equipo> listaEquipos = new ArrayList<>();
-        try(Connection conn = DriverManager.getConnection(url, user, password);
+        try(Connection conn = ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_FIND_ALL) )
         {
             ResultSet rs = pst.executeQuery();
@@ -69,7 +72,7 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
 
     @Override
     public Equipo save(Equipo entity) {
-        try(Connection conn = DriverManager.getConnection(url, user, password);
+        try(Connection conn =ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_INSERT) )
         {
             pst.setString(1, entity.getNombre());
@@ -85,7 +88,7 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
 
     @Override
     public Equipo update(Equipo entity) {
-        try(Connection conn = DriverManager.getConnection(url, user, password);
+        try(Connection conn = ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_UPDATE) )
         {
             pst.setString(1, entity.getNombre());
@@ -112,7 +115,7 @@ public class EquipoJdbcDAO implements DAO<Equipo> {
 
     @Override
     public void deleteById(Long id) {
-        try(Connection conn = DriverManager.getConnection(url, user, password);
+        try(Connection conn =ds.getConnection();
             PreparedStatement pst = conn.prepareStatement(SQL_DELETE) )
         {
             pst.setLong(1, id);
